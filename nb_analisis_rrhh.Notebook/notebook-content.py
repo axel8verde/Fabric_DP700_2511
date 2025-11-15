@@ -158,3 +158,98 @@ df_ft_costos_rrhh.write.format("delta").mode("overwrite").saveAsTable("Silver_Re
 # META   "language": "python",
 # META   "language_group": "synapse_pyspark"
 # META }
+
+# CELL ********************
+
+#/* Dimension Trabajadores */
+
+df_dim_trabajador = spark.sql(
+"""
+SELECT
+  businessentityid,
+  MIN(startdate) AS fechainicio,
+  MAX(enddate) AS fechatermino
+FROM Bronce_Landing.hr_employeedepartmenthistory
+GROUP BY businessentityid
+"""
+)
+
+display(df_dim_trabajador)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+#Guardar la tabla de dimensiones
+df_dim_trabajador.write.mode("overwrite").saveAsTable("Silver_Refined.dim_trabajador")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+#creamos la tabla de dimension departamento
+df_dim_departamento = spark.sql(
+"""
+SELECT
+  departmentid,
+  name AS departmentname,
+  groupname
+FROM Bronce_Landing.hr_department;
+"""
+)
+
+display(df_dim_departamento)
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+#Guardar la tabla de dimensiones
+df_dim_departamento.write.mode("overwrite").saveAsTable("Silver_Refined.dim_departamento")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }
+
+# CELL ********************
+
+#Creamos Dimension Turno
+df_dim_turno = spark.sql(
+"""
+SELECT
+  shiftid,
+  name AS shiftname,
+  starttime,
+  endtime
+FROM Bronce_Landing.hr_shift;
+"""
+)
+
+display(df_dim_turno)
+
+df_dim_turno.write.mode("overwrite").saveAsTable("Silver_Refined.dim_turno")
+
+# METADATA ********************
+
+# META {
+# META   "language": "python",
+# META   "language_group": "synapse_pyspark"
+# META }

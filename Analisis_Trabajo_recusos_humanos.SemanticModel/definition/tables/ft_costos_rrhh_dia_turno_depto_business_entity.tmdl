@@ -1,0 +1,82 @@
+table ft_costos_rrhh_dia_turno_depto_business_entity
+	lineageTag: 2b1b219e-a9de-4fe1-a860-41ee5c77927a
+	sourceLineageTag: [dbo].[ft_costos_rrhh_dia_turno_depto_business_entity]
+
+	column businessentityid
+		dataType: int64
+		formatString: 0
+		lineageTag: b454672c-d017-4302-8659-15c76a1ec67c
+		sourceLineageTag: businessentityid
+		summarizeBy: none
+		sourceColumn: businessentityid
+
+		annotation SummarizationSetBy = Automatic
+
+	column departmentid
+		dataType: int64
+		formatString: 0
+		lineageTag: 9a162195-1ddd-4bf1-b1d7-1e32f8ad20f4
+		sourceLineageTag: departmentid
+		summarizeBy: none
+		sourceColumn: departmentid
+
+		annotation SummarizationSetBy = Automatic
+
+	column shiftid
+		dataType: int64
+		formatString: 0
+		lineageTag: 97d63080-1e90-4984-8761-5fd9a4cf89d0
+		sourceLineageTag: shiftid
+		summarizeBy: none
+		sourceColumn: shiftid
+
+		annotation SummarizationSetBy = Automatic
+
+	column ratechangedate
+		dataType: dateTime
+		formatString: General Date
+		lineageTag: 415979b5-5794-48cd-9ae9-00e2fbfea2bf
+		sourceLineageTag: ratechangedate
+		summarizeBy: none
+		sourceColumn: ratechangedate
+
+		annotation SummarizationSetBy = Automatic
+
+	column rate
+		dataType: double
+		lineageTag: f0c6d3ac-914b-41dc-893c-91281e519913
+		sourceLineageTag: rate
+		summarizeBy: sum
+		sourceColumn: rate
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	column payfrequency
+		dataType: int64
+		formatString: 0
+		lineageTag: 4e193689-8394-4a29-b880-09e041f06837
+		sourceLineageTag: payfrequency
+		summarizeBy: sum
+		sourceColumn: payfrequency
+
+		annotation SummarizationSetBy = Automatic
+
+	column costo_dia
+		dataType: double
+		lineageTag: 3a4c3eb9-306d-42d7-acf6-8117022052a2
+		sourceLineageTag: costo_dia
+		summarizeBy: sum
+		sourceColumn: costo_dia
+
+		annotation SummarizationSetBy = Automatic
+
+		annotation PBI_FormatHint = {"isGeneralNumber":true}
+
+	partition ft_costos_rrhh_dia_turno_depto_business_entity = entity
+		mode: directLake
+		source
+			entityName: ft_costos_rrhh_dia_turno_depto_business_entity
+			expressionSource: 'DirectLake - Silver_Refined'
+

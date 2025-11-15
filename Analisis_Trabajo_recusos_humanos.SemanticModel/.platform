@@ -1,0 +1,11 @@
+{
+  "$schema": "https://developer.microsoft.com/json-schemas/fabric/gitIntegration/platformProperties/2.0.0/schema.json",
+  "metadata": {
+    "type": "SemanticModel",
+    "displayName": "Analisis_Trabajo_recusos_humanos"
+  },
+  "config": {
+    "version": "2.0",
+    "logicalId": "fb309b44-3289-875b-48a2-1e8ce32541d3"
+  }
+}
