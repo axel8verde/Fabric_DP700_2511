@@ -1,0 +1,4 @@
+relationship 1cbc2437-000a-4514-1e97-ec359cb0482e
+	fromColumn: ft_sales_dia_orden.salesreasonid
+	toColumn: dim_sales_reason.salesreasonid
+
